@@ -1,7 +1,17 @@
+import{ Aluno } from "../database/index.js";
 class HomeController {
-  index(req, res){
+  async index(req, res){
+    const novoAluno = await Aluno.create({
+      nome: "Julia",
+      sobrenome: 'Ferreira',
+      email: 'julia@dev.com',
+      idade: 25,
+      peso: 56,
+      altura: 1.62
+
+    });
     res.json({
-      message: "Olá, bem-vindo à página inicial!",
+      novoAluno,
     });
   }
 }
