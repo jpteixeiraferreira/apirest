@@ -1,10 +1,6 @@
-import{ Aluno } from "../database/index.js";
 class HomeController {
   async index(req, res){
-    const novoAluno = await Aluno.create(req.body);
-    res.json({
-      novoAluno,
-    });
+    res.json('OK');
   }
 }
 export default new HomeController();
