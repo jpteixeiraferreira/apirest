@@ -5,7 +5,7 @@ const router = new Router();
 router.get('/', (req, res)=>{
   alunoController.index(req, res);
 });
-router.put('/', (req, res)=>{
+router.post('/', (req, res)=>{
   alunoController.store(req, res);
 });
 router.get('/:id', (req, res)=>{
