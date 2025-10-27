@@ -1,28 +1,34 @@
 import Sequelize, { Model } from 'sequelize'
-
+import appConfig from '../config/appConfig'
 export default class Foto extends Model {
   static init (sequelize) {
     super.init(
       {
         originalName: {
           type: Sequelize.STRING,
+          field: 'originalName',
           defaultValue: '',
           validate: {
             notEmpty: {
               msg: 'Campo não pode ficar vazio'
             }
           },
-          field: 'originalName'
         },
         fileName: {
           type: Sequelize.STRING,
+          field: 'fileName',
           defaultValue: '',
           validate: {
             notEmpty: {
               msg: 'Campo não pode ficar vazio'
             }
           },
-          field: 'fileName'
+        },
+        url: {
+          type: Sequelize.VIRTUAL,
+          get(){
+            return `${appConfig.url}/images/${this.getDataValue('fileName')}`
+          }
         }
       },
       {
