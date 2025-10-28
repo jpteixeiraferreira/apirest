@@ -6,6 +6,7 @@ class UserController {
       const { id, nome, email } = novoUsuario
       return res.json({ id,nome, email });
     } catch (e) {
+      console.log(e);
       return res.status(400).json({
         error: e.errors.map(err => err.message)
       })
